@@ -1,2 +1,2 @@
 # plants-vs-insects
-Farm game
+Farm game made with my friends
