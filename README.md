@@ -1,2 +1,2 @@
 # plants-vs-insects
-Farm game made with my friends
+Farm game made with Binh himself
