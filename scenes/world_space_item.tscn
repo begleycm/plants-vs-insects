@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cex3e6i08oc5n"]
+
+[ext_resource type="Script" path="res://scenes/world_space_item.gd" id="1_vinfm"]
+
+[sub_resource type="Gradient" id="Gradient_weo2c"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yheia"]
+gradient = SubResource("Gradient_weo2c")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj5dn"]
+
+[node name="WorldSpaceItem" type="RigidBody2D"]
+collision_layer = 2
+script = ExtResource("1_vinfm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 9.53674e-07)
+scale = Vector2(0.3125, 0.3125)
+texture = SubResource("GradientTexture2D_yheia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jj5dn")
