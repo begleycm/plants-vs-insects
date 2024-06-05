@@ -32,7 +32,7 @@ func _process(delta) -> void:
 		var body = GetClosestBody()
 		if body != null:
 			#TODO add stuff here
-			inv.AddItem(body.)#NOT CORRECT ARGUMENT
+			#inv.AddItem(body.)#NOT CORRECT ARGUMENT
 			pass
 		
 func _physics_process(delta):
