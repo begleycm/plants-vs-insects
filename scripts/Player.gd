@@ -7,7 +7,9 @@ const JUMP_VELOCITY = -400.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var inv: Inventory = preload("res://scripts/inventory/Inventory .tres")
+
+@onready var inv: Inventory = preload("res://scripts/inventory/Inventory.tres")
+
 @onready var pickupArea: Area2D = get_node("Area2D")
 
 func _ready():
@@ -29,11 +31,19 @@ func GetClosestBody() -> Node2D:
 func _process(delta) -> void:
 #Pickup
 	if Input.is_action_pressed("interact"):
-		var body = GetClosestBody()
+		var body :Node2D = GetClosestBody()
 		if body != null:
 			#TODO add stuff here
-			inv.AddItem(body.)#NOT CORRECT ARGUMENT
+			
+			inv.AddItem(body.get_script())#NOT CORRECT ARGUMENT
 			pass
+
+
+	if Input.is_action_just_pressed("click"):
+		var bullet = preload("res://scenes/bullet.tscn").instantiate()
+		get_parent().add_child(bullet)
+
+
 		
 func _physics_process(delta):
 

@@ -54,8 +54,9 @@ interact={
 
 [layer_names]
 
-2d_physics/layer_1="Main"
-2d_physics/layer_2="PickUp"
+2d_physics/layer_1="Player Terrain Collision"
+2d_physics/layer_2="Item Collision"
+2d_physics/layer_3="Enemy Collision"
 
 [rendering]
 
