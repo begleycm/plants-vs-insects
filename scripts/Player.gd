@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var inv: Inventory = preload("res://scripts/inventory/Inventory.tres")
 
 @onready var pickupArea: Area2D = get_node("Area2D")
+@onready var areashape: CollisionShape2D = pickupArea.get_child(0)
 
 func _ready():
 	pickupArea.collision_mask = 2
@@ -31,12 +32,13 @@ func GetClosestBody() -> Node2D:
 func _process(delta) -> void:
 #Pickup
 	if Input.is_action_pressed("interact"):
+		#We preobably don't need a check since the mask is #2
 		var body :Node2D = GetClosestBody()
 		if body != null:
 			#TODO add stuff here
-			
+			print("picked up!")
 			inv.AddItem(body.get_script())#NOT CORRECT ARGUMENT
-			pass
+			body.queue_free()
 
 
 	if Input.is_action_just_pressed("click"):
@@ -50,7 +52,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
-	print(direction)
+	#print(direction)
 	if direction != Vector2.ZERO:
 		velocity = direction * SPEED
 	else:
