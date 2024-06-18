@@ -40,7 +40,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
-	print(direction)
+	#print(direction)
 	if direction != Vector2.ZERO:
 		velocity = direction * SPEED
 	else:
