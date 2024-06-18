@@ -4,6 +4,7 @@ extends Node
 
 @export var map_length:int = 16
 @export var map_height:int = 9
+@onready var tile_map = $NavigationRegion2D/TileMap
 
 var _pg:PathGenerator
 
@@ -16,8 +17,5 @@ func _ready():
 func _display_path():
 	var _path:Array[Vector2i] = _pg.generate_path()
 	print(_path)
-	# Places tiles
-	for element in _path:
-		var tile:Node2D = path_tile.instantiate()
-		add_child(tile)
-		tile.global_position = Vector2(element.x, element.y)
+	# Places a dirt block
+	tile_map.set_cell(0, Vector2i(0, 0), 0, (Vector2i(3, 1)))
