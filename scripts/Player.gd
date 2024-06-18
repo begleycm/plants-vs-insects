@@ -10,7 +10,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var inv: Inventory = preload("res://scripts/inventory/Inventory.tres")
 
-@onready var pickupArea: Area2D = get_node("Area2D")
+@onready var pickupArea: Area2D = get_node("PickUpArea")
 @onready var areashape: CollisionShape2D = pickupArea.get_child(0)
 
 func _ready():
@@ -35,9 +35,9 @@ func _process(delta) -> void:
 		#We preobably don't need a check since the mask is #2
 		var body :Node2D = GetClosestBody()
 		if body != null:
-			#TODO add stuff here
-			print("picked up!")
-			inv.AddItem(body.get_script())#NOT CORRECT ARGUMENT
+			print("picked up!", body.name)
+			inv.AddItem(body.item)#NOT CORRECT ARGUMENT
+			print(inv.items)
 			body.queue_free()
 
 

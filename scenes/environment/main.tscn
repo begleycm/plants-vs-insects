@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://hj0nia07mwgt"]
 
-[ext_resource type="PackedScene" uid="uid://bgmdles5s2c4u" path="res://scenes/Player.tscn" id="1_xgtu0"]
-[ext_resource type="PackedScene" uid="uid://cex3e6i08oc5n" path="res://scenes/world_space_item.tscn" id="2_tewed"]
+[ext_resource type="PackedScene" uid="uid://bgmdles5s2c4u" path="res://scenes/characters/Player.tscn" id="1_xgtu0"]
+[ext_resource type="PackedScene" uid="uid://dxemvki2cw55g" path="res://scenes/characters/world_space_item.tscn" id="2_tewed"]
 
 [sub_resource type="Environment" id="Environment_gvy2v"]
 background_mode = 3
@@ -19,8 +19,13 @@ glow_blend_mode = 1
 environment = SubResource("Environment_gvy2v")
 camera_attributes = SubResource("CameraAttributesPhysical_ctx1i")
 
-[node name="BaseItem" parent="." instance=ExtResource("2_tewed")]
-position = Vector2(102, 51)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="Items" type="Node" parent="."]
+
+[node name="BaseItem" parent="Items" instance=ExtResource("2_tewed")]
+position = Vector2(195, 95)
+
+[node name="BaseItem2" parent="Items" instance=ExtResource("2_tewed")]
+position = Vector2(390, 190)

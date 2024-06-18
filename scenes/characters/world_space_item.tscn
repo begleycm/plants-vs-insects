@@ -1,4 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cex3e6i08oc5n"]
+[gd_scene load_steps=6 format=3 uid="uid://dxemvki2cw55g"]
+
+[ext_resource type="Script" path="res://scripts/inventory/items/world_space_item.gd" id="1_bp7ok"]
+[ext_resource type="Resource" uid="uid://b438fpid1oddy" path="res://scripts/inventory/items/test_item.tres" id="2_60a1f"]
 
 [sub_resource type="Gradient" id="Gradient_weo2c"]
 
@@ -7,10 +10,11 @@ gradient = SubResource("Gradient_weo2c")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jj5dn"]
 
-[node name="BaseItem" type="RigidBody2D"]
+[node name="BaseItem" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 0
-gravity_scale = 0.0
+script = ExtResource("1_bp7ok")
+item = ExtResource("2_60a1f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9.53674e-07, 9.53674e-07)

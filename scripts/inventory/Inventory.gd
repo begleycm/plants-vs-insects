@@ -3,6 +3,7 @@ extends Resource
 class_name Inventory
 const maxSize = 10
 @export var items: Array[InvItem]
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func FindItem(other_item):
@@ -13,16 +14,19 @@ func FindItem(other_item):
 
 func AddItem(other_item : InvItem):
 #Check slot avalibility
+	print("Adding Item")
 	if items.size() < maxSize:
+		print("Size Check Good")
 		var item = FindItem(other_item)
 #Check item presence
 		if item == null: 
+			print("Item does not exist but added")
 			items.push_back(other_item)
 		else:
+			print("Item exists, adding count")
 			item.count += other_item.count
 			#TODO: add check for item count and max count of item slot
 
-		#And then remove the item from the scene or something
 	pass
 
 

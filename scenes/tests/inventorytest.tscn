@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqxs36nsxgo5j"]
+
+[ext_resource type="PackedScene" uid="uid://bgmdles5s2c4u" path="res://scenes/characters/Player.tscn" id="1_t2qxx"]
+[ext_resource type="PackedScene" uid="uid://dxemvki2cw55g" path="res://scenes/characters/world_space_item.tscn" id="2_crd0v"]
+
+[sub_resource type="Environment" id="Environment_gvy2v"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 1.65
+glow_blend_mode = 1
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ctx1i"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_t2qxx")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gvy2v")
+camera_attributes = SubResource("CameraAttributesPhysical_ctx1i")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="Items" type="Node" parent="."]
+
+[node name="BaseItem" parent="Items" instance=ExtResource("2_crd0v")]
+position = Vector2(195, 95)
+
+[node name="BaseItem2" parent="Items" instance=ExtResource("2_crd0v")]
+position = Vector2(390, 190)
