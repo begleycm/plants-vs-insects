@@ -7,4 +7,5 @@ const path = preload("PathCreator.gd")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var path_creator = path.new()
+	# Creates the map
 	path_creator.create_path(tile_map)
