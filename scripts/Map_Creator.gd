@@ -1,22 +1,31 @@
-extends Node
+extends Node2D
 
 @export var map_length:int = 32
 @export var map_height:int = 18
 
 @export var start = [-(map_length / 2) + 1, -(map_height / 2)]
 @export var end = [(map_length / 2) - 2, (map_height / 2) - 1]
+
+@onready var start_place = get_node("start_place")
 var tile_map:TileMap
 
-# Called when the node enters the scene tree for the first time.
-func create_path(tile_map_main):
-	tile_map = tile_map_main
+# Called by main to make the map
+func create_map(map):
+	tile_map = map
+	
 	display_grass()
 	
-	#This generates a random number generator that is used to place blocks
+	spawn_start()
+
+	#Enables navigation for layer 0
+	tile_map.set_layer_navigation_enabled(0, true)
+	
+	
+	#Random number generator that is used to place blocks
 	var rng = RandomNumberGenerator.new()
 	spawn_blocks(rng)
 	
-	#Places a block for testing so I know where the path starts
+	#Places test blocks
 	tile_map.set_cell(0, Vector2i(start[0], start[1]), 0, (Vector2i(3, 1)))
 	tile_map.set_cell(0, Vector2i(end[0], end[1]), 0, (Vector2i(3, 1)))
 	
@@ -55,3 +64,19 @@ func is_placeable(rand_l:int, rand_h:int):
 	
 	return can_place
 	
+func spawn_start():
+	var start_sprite = Sprite2D.new()
+	start_sprite.texture = load("res://assets/darktile.png")
+	start_sprite.position = Vector2(start[0], start[1])
+	
+	# Explicitly get the node
+	var target_node = get_node("res://scenes/main.tscn")
+	#print(target_node.get_path())
+	
+	# Check if the node is valid
+	if target_node:
+		print("Adding sprite...")
+		target_node.add_child(start_sprite)
+		print("Sprite addded!")
+	else:
+		print("Error: Target node is null or invalid")
